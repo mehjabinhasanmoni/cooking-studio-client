@@ -1,11 +1,11 @@
 import React from 'react';
+import { createBrowserRouter } from 'react-router-dom';
+import Main from '../layouts/Main';
 
-const Routes = () => {
-    return (
-        <div>
-            
-        </div>
-    );
-};
-
-export default Routes;
+const router = createBrowserRouter([
+    {
+        path : '/',
+        element : <Main></Main>
+    }
+])
+export default router;
