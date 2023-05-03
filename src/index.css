@@ -28,3 +28,18 @@
 .promo-container p{
     font-size: 1.5em;
 }
+
+  .subscribe input {
+    padding: 20px 15px;
+    border-radius: 8px;
+    border: 2px solid #878484;
+    margin: 20px 0;
+    color: #ffffff;
+    font-size: 16px;
+    width: 100%;
+  }
+  
+  .subscribe input:hover {
+    border-color: #023f27;
+  }
+  

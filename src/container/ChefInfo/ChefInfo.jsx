@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Card, CardGroup, Container } from 'react-bootstrap';
 import { FaBeer, FaRegEye, FaRegThumbsUp } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const ChefInfo = ({chef}) => {
     const {chef_id, Chef_Picture, Chef_Name, Years_of_experience, Numbers_of_recipes, Likes} = chef;
@@ -24,7 +25,9 @@ const ChefInfo = ({chef}) => {
                     </Card.Body>
                     <Card.Footer className='d-flex align-items-center justify-content-between'>
                     <p><FaRegThumbsUp></FaRegThumbsUp> {Likes}</p>
-                    <Button variant="success"> <FaRegEye></FaRegEye> View Recipes</Button>
+                     <Link to="/recipes">
+                        <Button variant="success"> <FaRegEye></FaRegEye> View Recipes</Button>
+                    </Link>
                     </Card.Footer>
                 </Card>
         </div>

@@ -6,6 +6,7 @@ import { Container, Row } from 'react-bootstrap';
 import Promo from '../../container/Promo/Promo';
 import SpecialPromo from '../../container/SpecialPromo/SpecialPromo';
 
+
 const Home = () => {
     const chefInfo = useLoaderData();
     return (
@@ -25,6 +26,7 @@ const Home = () => {
             </Container>
             <Promo></Promo>
             <SpecialPromo></SpecialPromo>
+            
             
 
         </div>
