@@ -8,7 +8,7 @@ const ChefInfo = ({chef}) => {
         <div className='col-lg-4 col-md-4 col-sm-6 col-xs-12 mb-4 chef-card'>
 
         
-                <Card className='border border-2 border-success'>
+                <Card>
                     <div style={{height:'320px',overflow:'hidden'}} className='p-3'>
                          <Card.Img variant="top" src={Chef_Picture} />
                     </div>

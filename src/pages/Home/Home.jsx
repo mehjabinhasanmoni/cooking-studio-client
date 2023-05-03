@@ -9,7 +9,7 @@ import SpecialPromo from '../../container/SpecialPromo/SpecialPromo';
 const Home = () => {
     const chefInfo = useLoaderData();
     return (
-        <div className='mt-5 mx-auto'>
+        <div >
             <Banner></Banner>
             <Container className='mt-5'>
                 <Row>
