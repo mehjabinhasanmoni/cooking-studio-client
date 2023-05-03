@@ -1,0 +1,30 @@
+.chef-card img{
+    transition: 1s;
+   
+   
+}
+
+.chef-card:hover img{
+    transform: scale(1.2);
+}
+
+.promo-container{
+    background-image: linear-gradient(
+        rgba(2, 132, 52, 0.45), 
+        rgba(3, 94, 29, 0.45)
+      ), url('https://i.ibb.co/F8X0d3v/bg-promo.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 120px 0;
+    margin: 100px 0;
+}
+
+.promo-container h1{
+    font-size: 3.5em;
+}
+
+.promo-container p{
+    font-size: 1.5em;
+}
