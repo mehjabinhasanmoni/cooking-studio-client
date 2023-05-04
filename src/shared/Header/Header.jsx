@@ -38,15 +38,16 @@ const Header = () => {
                             <Nav>
                                 
                                
-                                    <FaUserCircle style={{fontSize: '2rem'}}></FaUserCircle>
-                               
-                                
-                                    
-                                        <Button onClick={handleLogOut} varient="secondary">Logout</Button> :
-                                        <Link to="/login">
-                                            <Button varient="secondary">Login</Button>
-                                        </Link>
-                                   
+                            {
+                                user && <FaUserCircle style={{ fontSize: '2rem' }}></FaUserCircle>
+                            }
+
+                            {user ?
+                                <Button onClick={handleLogOut} variant="secondary">Logout</Button> :
+                                <Link to="/login">
+                                    <Button variant="secondary">Login</Button>
+                                </Link>
+                            }
                                
                             </Nav>
                         </Navbar.Collapse>
