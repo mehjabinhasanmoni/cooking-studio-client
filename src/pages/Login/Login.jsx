@@ -26,6 +26,7 @@ const Login = () => {
         const loggedUser = result.user;
         console.log(loggedUser);
         setError("");
+        
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -89,20 +90,20 @@ const Login = () => {
           Login
         </Button>
         <br />
-        <Form.Text className="text-secondary">
+        <Form.Text className="text-secondary ">
           Don't Have an Account? <Link to="/register">Register</Link>
         </Form.Text>
         <Form.Text className="text-danger">
           <p>{error}</p>
         </Form.Text>
 
-        <div className="d-flex align-items-center justify-content-between p-2 m-2">
-          <Button onClick={handleGoogleSignIn} variant="outline-primary">
+        <div className="mt-5">
+          <Button onClick={handleGoogleSignIn} variant="outline-primary" className="d-block mb-2 w-100 p-3">
             <FaGoogle></FaGoogle> Sign in with Google
           </Button>
           <Button
             onClick={handleGitHubSignIn}
-            className="me-2"
+            className="d-block mb-2 w-100 p-3"
             variant="outline-secondary"
           >
             <FaGithub></FaGithub> Sign in with Github

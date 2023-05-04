@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import { FaRegHeart } from "react-icons/fa";
 import "@smastrom/react-rating/style.css";
 import { Rating } from "@smastrom/react-rating";
 import { Toaster, toast } from "react-hot-toast";
+import LazyLoad from "react-lazy-load";
 
 const ViewRecipes = () => {
   const singleChefInfo = useLoaderData();
@@ -41,7 +42,9 @@ const ViewRecipes = () => {
               className="p-2"
               style={{ height: "250px", overflow: "hidden" }}
             >
+              <LazyLoad height={762} offset={300}>
               <Card.Img variant="top" src={singleChef.photo} />
+              </LazyLoad>
             </div>
 
             <Card.Body>
