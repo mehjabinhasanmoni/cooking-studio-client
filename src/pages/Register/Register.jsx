@@ -5,7 +5,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 
 const Register = () => {
 
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateProfileUser } = useContext(AuthContext);
     const [accepted, setAccepted] = useState(false);
     const[error, setError] = useState('');
     const[success, setSuccess] = useState('');
@@ -13,9 +13,11 @@ const Register = () => {
     const handleRegister = event =>{
         event.preventDefault();
         setSuccess('');
+        const name = event.target.name.value;
+        const photourl = event.target.photo.value;
         const email = event.target.email.value;
-        const password = event.target.password.value;
-        console.log(email, password);
+       const password = event.target.password.value;
+        console.log(email, password, name);
 
         createUser(email, password)
         .then(result => {
@@ -24,6 +26,16 @@ const Register = () => {
             setError('');
             event.target.reset();
             setSuccess('User has created successfully');
+            updateProfileUser(result.user, name, photourl)
+            .then(()=>{
+              console.log('username updated');
+            })
+          .catch(error =>{
+              console.log(error.message);
+              
+              
+          })
+
         })
         .catch(error =>{
             console.log(error.message);
@@ -36,7 +48,8 @@ const Register = () => {
     const handleAccepted = event =>{
         setAccepted(event.target.checked)
     }
-    
+
+  
 
   return (
     <Container className="w-25 mx-auto mt-5 mb-5">

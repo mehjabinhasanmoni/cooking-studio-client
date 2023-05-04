@@ -77,7 +77,7 @@ const Header = () => {
                       </OverlayTrigger>
                     </div>
                   ) : (
-                    <div>Image Icon</div>
+                    <div><FaUserCircle style={{fontSize:'50px'}}></FaUserCircle></div>
                   )}
                   <Button
                     onClick={handleLogOut}

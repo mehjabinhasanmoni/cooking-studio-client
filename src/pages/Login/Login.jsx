@@ -38,7 +38,7 @@ const Login = () => {
   const handleGoogleSignIn = () => {
     googleProvider()
       .then((result) => {
-        const user = result.user;
+        const googleUser = result.user;
       })
       .catch((error) => {
         console.log(error);
@@ -48,7 +48,7 @@ const Login = () => {
   const handleGitHubSignIn = () => {
     funGithubProvider()
       .then((result) => {
-        const user = result.user;
+        const githubUser = result.user;
       })
       .catch((error) => {
         console.log(error);
