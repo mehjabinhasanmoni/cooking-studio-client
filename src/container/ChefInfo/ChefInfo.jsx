@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Card, CardGroup, Container } from "react-bootstrap";
 import { FaBeer, FaRegEye, FaRegThumbsUp } from "react-icons/fa";
+import LazyLoad from "react-lazy-load";
 import { Link } from "react-router-dom";
 
 const ChefInfo = ({ chef }) => {
@@ -16,7 +17,9 @@ const ChefInfo = ({ chef }) => {
     <div className="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb-4 chef-card">
       <Card>
         <div style={{ height: "320px", overflow: "hidden" }} className="p-3">
+        <LazyLoad height={1762} offset={300} >
           <Card.Img variant="top" src={Chef_Picture} />
+          </LazyLoad>
         </div>
 
         <Card.Body>
