@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import { FaRegHeart } from "react-icons/fa";
 import "@smastrom/react-rating/style.css";
 import { Rating } from "@smastrom/react-rating";
+import { Toaster, toast } from "react-hot-toast";
 
 const ViewRecipes = () => {
   const singleChefInfo = useLoaderData();
+
+  const[disable, setDisable] = useState([]);
 
   const {
     chef_id,
@@ -18,12 +21,22 @@ const ViewRecipes = () => {
     rating,
   } = singleChefInfo;
 
+  const notify = (recipe_id) => {
+    toast('The Recipe is Your Favourite');
+    console.log("disabled click",recipe_id);
+    const newDisable=[...disable];
+    newDisable.push(recipe_id);
+    setDisable(newDisable)
+    
+  }
+
+  
   return (
     <Row>
       {singleChefInfo.map((singleChef) => (
         <Col
           className="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb-5"
-          key={singleChef.chef_id}
+          key={singleChef.recipe_id}
         >
           <Card style={{ width: "26rem", height: "700px" }}>
             <div
@@ -60,8 +73,10 @@ const ViewRecipes = () => {
                   />
                   {singleChef.rating}
                 </div>
-
-                <FaRegHeart></FaRegHeart>
+                
+                
+                <Button variant={disable.includes(singleChef.recipe_id)?'primary':'outline-success'} onClick={()=>notify(singleChef.recipe_id)} disabled={disable.includes(singleChef.recipe_id)} onClick={()=>notify(singleChef.recipe_id)}> <FaRegHeart></FaRegHeart></Button>
+                    <Toaster />
               </div>
             </Card.Footer>
           </Card>

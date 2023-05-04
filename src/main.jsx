@@ -6,6 +6,7 @@ import AuthProvider from './providers/AuthProvider.jsx';
 import { RouterProvider } from 'react-router-dom';
 import router from './routes/Routes.jsx';
 import '@smastrom/react-rating/style.css'
+import toast, { Toaster } from 'react-hot-toast';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

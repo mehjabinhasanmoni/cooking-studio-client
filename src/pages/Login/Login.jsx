@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 
 const Login = () => {
     return (
-        <Container className='w-25 mx-auto'>
-        <h3>Please Login</h3>
-        <Form>
+        <Container className='w-25 mx-auto mt-5 mb-5'>
+        <h1>Please Login</h1>
+        <Form  className="border border-2 border-success p-5">
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control type="email" name='email' placeholder="Enter email" required />
@@ -18,9 +18,9 @@ const Login = () => {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Check me out" />
+                <Form.Check type="checkbox" label="Remember me" />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button variant="success" type="submit">
                 Login
             </Button>
             <br />

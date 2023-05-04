@@ -4,6 +4,7 @@ import Main from '../layouts/Main';
 import Home from '../pages/Home/Home';
 import SingleChef from '../container/SingleChef/SingleChef';
 import Login from '../pages/Login/Login';
+import Register from '../pages/Register/Register';
 
 const router = createBrowserRouter([
     {
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
             },
             {
                 path : '/register',
-                element :<Login></Login>
+                element :<Register></Register>
                 
                 
             },
