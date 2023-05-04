@@ -1,12 +1,47 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Register = () => {
+
+    const { createUser } = useContext(AuthContext);
+    const [accepted, setAccepted] = useState(false);
+    const[error, setError] = useState('');
+    const[success, setSuccess] = useState('');
+
+    const handleRegister = event =>{
+        event.preventDefault();
+        setSuccess('');
+        const email = event.target.email.value;
+        const password = event.target.password.value;
+        console.log(email, password);
+
+        createUser(email, password)
+        .then(result => {
+            const createdUser = result.user;
+            console.log(createdUser);
+            setError('');
+            event.target.reset();
+            setSuccess('User has created successfully');
+        })
+        .catch(error =>{
+            console.log(error.message);
+            setError(error.message);
+            
+        })
+       
+    }
+
+    const handleAccepted = event =>{
+        setAccepted(event.target.checked)
+    }
+    
+
   return (
     <Container className="w-25 mx-auto mt-5 mb-5">
       <h1>Please Register</h1>
-      <Form className="border border-2 border-success p-5">
+      <Form onSubmit={handleRegister} className="border border-2 border-success p-5">
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Name</Form.Label>
           <Form.Control
@@ -47,12 +82,13 @@ const Register = () => {
 
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check
+             onClick={handleAccepted}
             type="checkbox"
             name="accept"
             label="Accept Terms and Conditions"
           />
         </Form.Group>
-        <Button variant="success" type="submit">
+        <Button variant="success" disabled={!accepted} type="submit">
           Register
         </Button>
         <br /><br />
@@ -61,7 +97,16 @@ const Register = () => {
         </Form.Text>
         <Form.Text className="text-success"></Form.Text>
         <Form.Text className="text-danger"></Form.Text>
+        <br/><br/>
+        <Form.Text className="text-success">
+                <h5>{success}</h5>
+         </Form.Text>
+            <Form.Text className="text-danger">
+                <p>{error}</p>
+        </Form.Text>
+
       </Form>
+      
     </Container>
   );
 };

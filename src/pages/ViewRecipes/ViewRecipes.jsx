@@ -22,7 +22,7 @@ const ViewRecipes = () => {
   } = singleChefInfo;
 
   const notify = (recipe_id) => {
-    toast('The Recipe is Your Favourite');
+    toast.success('The Recipe is Your Favourite');
     console.log("disabled click",recipe_id);
     const newDisable=[...disable];
     newDisable.push(recipe_id);
@@ -75,7 +75,7 @@ const ViewRecipes = () => {
                 </div>
                 
                 
-                <Button variant={disable.includes(singleChef.recipe_id)?'primary':'outline-success'} onClick={()=>notify(singleChef.recipe_id)} disabled={disable.includes(singleChef.recipe_id)} onClick={()=>notify(singleChef.recipe_id)}> <FaRegHeart></FaRegHeart></Button>
+                <Button variant={disable.includes(singleChef.recipe_id)?'success':'outline-success'} onClick={()=>notify(singleChef.recipe_id)} disabled={disable.includes(singleChef.recipe_id)} onClick={()=>notify(singleChef.recipe_id)}> <FaRegHeart></FaRegHeart></Button>
                     <Toaster />
               </div>
             </Card.Footer>
