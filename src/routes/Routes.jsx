@@ -5,6 +5,7 @@ import Home from '../pages/Home/Home';
 import SingleChef from '../container/SingleChef/SingleChef';
 import Login from '../pages/Login/Login';
 import Register from '../pages/Register/Register';
+import PrivateRoutes from './PrivateRoutes';
 
 const router = createBrowserRouter([
     {
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
             },
             {
                 path : ':id',
-                element :<SingleChef></SingleChef>,
+                element :<PrivateRoutes><SingleChef></SingleChef></PrivateRoutes>,
                 loader : ({params}) => fetch(`https://cooking-studio-server-mehjabinhasanmoni.vercel.app/recipes/${params.id}`)
                 
             },

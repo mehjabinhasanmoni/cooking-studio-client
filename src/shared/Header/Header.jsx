@@ -6,16 +6,16 @@ import { AuthContext } from '../../providers/AuthProvider';
 
 const Header = () => {
 
-    // const {user} = useContext(AuthContext);
+    const {user, logOut} = useContext(AuthContext);
 
-    // const handleLogOut = () =>{
-    //     logOut()
-    //      .then()
-    //      .catch(error =>{
-    //         console.log(error);
-    //      })
+    const handleLogOut = () =>{
+        logOut()
+         .then()
+         .catch(error =>{
+            console.log(error);
+         })
 
-    // }
+    }
 
 
     return (
@@ -36,18 +36,17 @@ const Header = () => {
                             
                             </Nav>
                             <Nav>
-                                {/* {
-                                user && 
-                                    <FaUserCircle style={{fontSize: '2rem'}}></FaUserCircle>
-                               }
                                 
-                                    {
-                                        user ? 
+                               
+                                    <FaUserCircle style={{fontSize: '2rem'}}></FaUserCircle>
+                               
+                                
+                                    
                                         <Button onClick={handleLogOut} varient="secondary">Logout</Button> :
                                         <Link to="/login">
                                             <Button varient="secondary">Login</Button>
                                         </Link>
-                                    } */}
+                                   
                                
                             </Nav>
                         </Navbar.Collapse>
