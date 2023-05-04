@@ -15,7 +15,7 @@ const SingleChef = () => {
     },[])
     
     return (
-        <div className=''>
+        <div>
             
            <div className='d-flex align-items-center justify-content-between chef-details'>
             

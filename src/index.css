@@ -4,8 +4,6 @@
   transition: 500ms;
 }
 
-
-
 .chef-card img {
   transition: 1s;
 }
@@ -83,4 +81,10 @@
 
 .avatar img {
   width: 110%;
+}
+
+
+.text-lg{
+  font-weight: bold;
+  font-size: 1.3em;
 }

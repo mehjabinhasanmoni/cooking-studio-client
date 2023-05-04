@@ -9,7 +9,7 @@ import { Toaster, toast } from "react-hot-toast";
 const ViewRecipes = () => {
   const singleChefInfo = useLoaderData();
 
-  const[disable, setDisable] = useState([]);
+  const [disable, setDisable] = useState([]);
 
   const {
     chef_id,
@@ -22,15 +22,13 @@ const ViewRecipes = () => {
   } = singleChefInfo;
 
   const notify = (recipe_id) => {
-    toast.success('The Recipe is Your Favourite');
-    console.log("disabled click",recipe_id);
-    const newDisable=[...disable];
+    toast.success("The Recipe is Your Favourite");
+    console.log("disabled click", recipe_id);
+    const newDisable = [...disable];
     newDisable.push(recipe_id);
-    setDisable(newDisable)
-    
-  }
+    setDisable(newDisable);
+  };
 
-  
   return (
     <Row>
       {singleChefInfo.map((singleChef) => (
@@ -73,10 +71,20 @@ const ViewRecipes = () => {
                   />
                   {singleChef.rating}
                 </div>
-                
-                
-                <Button variant={disable.includes(singleChef.recipe_id)?'success':'outline-success'} onClick={()=>notify(singleChef.recipe_id)} disabled={disable.includes(singleChef.recipe_id)} onClick={()=>notify(singleChef.recipe_id)}> <FaRegHeart></FaRegHeart></Button>
-                    <Toaster />
+
+                <Button
+                  variant={
+                    disable.includes(singleChef.recipe_id)
+                      ? "success"
+                      : "outline-success"
+                  }
+                  onClick={() => notify(singleChef.recipe_id)}
+                  disabled={disable.includes(singleChef.recipe_id)}
+                >
+                  {" "}
+                  <FaRegHeart></FaRegHeart>
+                </Button>
+                <Toaster />
               </div>
             </Card.Footer>
           </Card>

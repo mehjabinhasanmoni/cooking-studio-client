@@ -7,19 +7,22 @@ import Login from '../pages/Login/Login';
 import Register from '../pages/Register/Register';
 import PrivateRoutes from './PrivateRoutes';
 import Blog from '../pages/Blog/Blog';
+import ErrorPage from '../pages/ErrorPage/ErrorPage';
 
 const router = createBrowserRouter([
     {
         path : '/',
         element : <Main></Main>,
+        errorElement:<ErrorPage></ErrorPage>,
         children : [
             {
                 path : '/',
                 element :<Home></Home>,
+                errorElement:<ErrorPage></ErrorPage>,
                 loader : () => fetch("https://cooking-studio-server-mehjabinhasanmoni.vercel.app/chefinfo")
             },
             {
-                path : ':id',
+                path : '/chef-detail/:id',
                 element :<PrivateRoutes><SingleChef></SingleChef></PrivateRoutes>,
                 loader : ({params}) => fetch(`https://cooking-studio-server-mehjabinhasanmoni.vercel.app/recipes/${params.id}`)
                 
