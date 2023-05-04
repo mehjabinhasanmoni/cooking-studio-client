@@ -6,7 +6,7 @@ import { FaGoogle, FaGithub } from "react-icons/fa";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const Login = () => {
-    const { signIn , googleProvider } = useContext(AuthContext);
+    const { signIn , googleProvider, funGithubProvider } = useContext(AuthContext);
     const navigate = useNavigate();
     const[error, setError] = useState('');
    
@@ -34,6 +34,7 @@ const Login = () => {
                setError(error.message);
             })
     }
+// Google Sign In
 
     const handleGoogleSignIn = () => {
         googleProvider()
@@ -47,8 +48,22 @@ const Login = () => {
            
           });
     }
-
+// Github  Sign In
+    const handleGitHubSignIn = () => {
+        funGithubProvider()
+        .then((result) => {
     
+            const user = result.user;
+           
+          })
+          .catch((error) => {
+            console.log(error);
+           
+          });
+        
+    }
+
+
 
     return (
         <Container className='w-25 mx-auto mt-5 mb-5'>
@@ -80,7 +95,7 @@ const Login = () => {
 
             <div className='d-flex align-items-center justify-content-between p-2 m-2'>
                 <Button onClick={handleGoogleSignIn} variant="outline-primary"><FaGoogle></FaGoogle> Sign in with Google</Button>
-                <Button className='me-2' variant="outline-secondary"><FaGithub></FaGithub> Sign in with Github</Button>
+                <Button onClick={handleGitHubSignIn} className='me-2' variant="outline-secondary"><FaGithub></FaGithub> Sign in with Github</Button>
             </div>
 
         </Form>
