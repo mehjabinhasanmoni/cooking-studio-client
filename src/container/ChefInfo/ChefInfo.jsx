@@ -25,7 +25,7 @@ const ChefInfo = ({chef}) => {
                     </Card.Body>
                     <Card.Footer className='d-flex align-items-center justify-content-between'>
                     <p><FaRegThumbsUp></FaRegThumbsUp> {Likes}</p>
-                     <Link to="/recipes">
+                     <Link to={`/${chef_id}`}>
                         <Button variant="success"> <FaRegEye></FaRegEye> View Recipes</Button>
                     </Link>
                     </Card.Footer>
