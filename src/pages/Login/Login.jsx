@@ -2,11 +2,14 @@ import React, { useContext, useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
+import { FaGoogle, FaGithub } from "react-icons/fa";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const Login = () => {
-    const { signIn } = useContext(AuthContext);
+    const { signIn , googleProvider } = useContext(AuthContext);
     const navigate = useNavigate();
     const[error, setError] = useState('');
+   
     const location = useLocation();
     console.log('login page location', location);
     const from = location.state?.from?.pathname || '/'
@@ -32,6 +35,20 @@ const Login = () => {
             })
     }
 
+    const handleGoogleSignIn = () => {
+        googleProvider()
+        .then((result) => {
+    
+            const user = result.user;
+           
+          })
+          .catch((error) => {
+            console.log(error);
+           
+          });
+    }
+
+    
 
     return (
         <Container className='w-25 mx-auto mt-5 mb-5'>
@@ -60,7 +77,15 @@ const Login = () => {
             <Form.Text className="text-danger">
                 <p>{error}</p>
             </Form.Text>
+
+            <div className='d-flex align-items-center justify-content-between p-2 m-2'>
+                <Button onClick={handleGoogleSignIn} variant="outline-primary"><FaGoogle></FaGoogle> Sign in with Google</Button>
+                <Button className='me-2' variant="outline-secondary"><FaGithub></FaGithub> Sign in with Github</Button>
+            </div>
+
         </Form>
+
+        
     </Container>
     );
 };
