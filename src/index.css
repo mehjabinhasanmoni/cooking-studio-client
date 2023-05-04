@@ -1,61 +1,86 @@
-.chef-card img{
-    transition: 1s;
-   
-   
+.navbar-nav a{
+  text-decoration: none;
+  color: #242424;
+  transition: 500ms;
 }
 
-.chef-card:hover img{
-    transform: scale(1.2);
+
+
+.chef-card img {
+  transition: 1s;
 }
 
-.promo-container{
-    background-image: linear-gradient(
-        rgba(2, 132, 52, 0.45), 
-        rgba(3, 94, 29, 0.45)
-      ), url('https://i.ibb.co/F8X0d3v/bg-promo.jpg');
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding: 120px 0;
-    margin: 100px 0;
+.activeLink,.navbar-nav a:hover{
+  background-color: #00a463;
+  color: #fff !important;
 }
 
-.promo-container h1{
-    font-size: 3.5em;
+.chef-card:hover img {
+  transform: scale(1.2);
 }
 
-.promo-container p{
-    font-size: 1.5em;
+.promo-container {
+  background-image: linear-gradient(
+      rgba(2, 132, 52, 0.45),
+      rgba(3, 94, 29, 0.45)
+    ),
+    url("https://i.ibb.co/F8X0d3v/bg-promo.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 120px 0;
+  margin: 100px 0;
 }
 
-  .subscribe input {
-    padding: 20px 15px;
-    border-radius: 8px;
-    border: 2px solid #878484;
-    margin: 20px 0;
-    color: #ffffff;
-    font-size: 16px;
-    width: 100%;
-  }
-  
-  .subscribe input:hover {
-    border-color: #023f27;
-  }
-  
+.promo-container h1 {
+  font-size: 3.5em;
+}
 
-  .chef-details{
-    background-image: 
-    linear-gradient(
-        rgba(23, 146, 68, 0.45), 
-        rgba(19, 237, 81, 0.45)
-      ),url('https://i.ibb.co/LR1tNfh/chef-details-banner.png');
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding: 50px 0;
-    margin: 50px 0;
-    color: #000;
-  }
+.promo-container p {
+  font-size: 1.5em;
+}
 
+.subscribe input {
+  padding: 20px 15px;
+  border-radius: 8px;
+  border: 2px solid #878484;
+  margin: 20px 0;
+  color: #ffffff;
+  font-size: 16px;
+  width: 100%;
+}
+
+.subscribe input:hover {
+  border-color: #023f27;
+}
+
+.chef-details {
+  background-image: linear-gradient(
+      rgba(23, 146, 68, 0.45),
+      rgba(19, 237, 81, 0.45)
+    ),
+    url("https://i.ibb.co/LR1tNfh/chef-details-banner.png");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 50px 0;
+  margin: 0 0 50px 0;
+  color: #000;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  border-radius: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px auto;
+}
+
+.avatar img {
+  width: 110%;
+}

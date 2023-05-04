@@ -6,6 +6,7 @@ import SingleChef from '../container/SingleChef/SingleChef';
 import Login from '../pages/Login/Login';
 import Register from '../pages/Register/Register';
 import PrivateRoutes from './PrivateRoutes';
+import Blog from '../pages/Blog/Blog';
 
 const router = createBrowserRouter([
     {
@@ -32,6 +33,12 @@ const router = createBrowserRouter([
             {
                 path : '/register',
                 element :<Register></Register>
+                
+                
+            },
+            {
+                path : '/blog',
+                element :<Blog></Blog>
                 
                 
             },
