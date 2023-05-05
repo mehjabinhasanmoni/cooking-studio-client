@@ -3,6 +3,7 @@ import { Button, Container, Form } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { updateProfile } from "firebase/auth";
+import { FaCheck, FaClipboard } from "react-icons/fa";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
@@ -64,8 +65,9 @@ const Register = () => {
   };
 
   return (
-    <Container className="w-25 mx-auto mt-5 mb-5">
-      <h1>Please Register</h1>
+    <Container className=" mt-5 mb-5">
+      <div className="col-md-5 col-lg-5 col-sm-12 col-xs-12 mx-auto">
+        <h2 className="text-success mb-3 d-flex align-items-center"><FaClipboard></FaClipboard> &nbsp; Please Register</h2>
       <Form
         onSubmit={handleRegister}
         className="border border-2 border-success p-5"
@@ -76,6 +78,7 @@ const Register = () => {
             type="text"
             name="name"
             placeholder="Your Name"
+            className="py-3"
             required
           />
         </Form.Group>
@@ -84,6 +87,7 @@ const Register = () => {
           <Form.Control
             type="text"
             name="photo"
+            className="py-3"
             placeholder="Photo URL"
            
           />
@@ -94,6 +98,7 @@ const Register = () => {
             type="email"
             name="email"
             placeholder="Enter email"
+            className="py-3"
             required
           />
         </Form.Group>
@@ -103,8 +108,8 @@ const Register = () => {
           <Form.Control
             type="password"
             name="password"
-            placeholder="Password"
-         
+            placeholder="Password min 6 Digit"
+            className="py-3"
             required
           />
         </Form.Group>
@@ -117,8 +122,8 @@ const Register = () => {
             label="Accept Terms and Conditions"
           />
         </Form.Group>
-        <Button variant="success" disabled={!accepted} type="submit">
-          Register
+        <Button variant="success" disabled={!accepted} className="py-3" type="submit">
+          <FaCheck></FaCheck> Register
         </Button>
         <br />
         <br />
@@ -136,6 +141,7 @@ const Register = () => {
           <p>{error}</p>
         </Form.Text>
       </Form>
+      </div>
     </Container>
   );
 };

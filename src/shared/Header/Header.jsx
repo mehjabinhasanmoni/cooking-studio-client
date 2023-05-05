@@ -8,7 +8,7 @@ import {
   Tooltip,
 } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
-import { FaComment, FaHome, FaSignOutAlt, FaUserCircle } from "react-icons/fa";
+import { FaClipboard, FaComment, FaHome, FaRegistered, FaSignInAlt, FaSignOutAlt, FaUserCircle } from "react-icons/fa";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Header = () => {
@@ -45,7 +45,7 @@ const Header = () => {
             <Nav >
             <Link
                 to="/"
-                className={`border border border-success px-4 py-3 me-2 my-2 rounded ${
+                className={`d-flex justify-content-center align-items-center border border border-success px-4 py-3 me-2 my-2 rounded ${
                   current?.pathname === "/" && "activeLink"
                 }`}
               >
@@ -54,7 +54,7 @@ const Header = () => {
 
               <Link
                 to="/blog"
-                className={`border border border-success px-4 py-3 me-2 my-2 rounded ${
+                className={`d-flex justify-content-center align-items-center border border border-success px-4 py-3 me-2 my-2 rounded ${
                   current?.pathname === "/blog" && "activeLink"
                 }`}
               >
@@ -69,11 +69,11 @@ const Header = () => {
                     overlay={renderTooltip}
                   >
                     {user?.photoURL ? (
-                      <div className="avatar my-2 me-2">
-                        <img src={user?.photoURL} alt="missing" />
+                      <div className="avatar my-2 mx-auto">
+                        <img src={user.photoURL} referrerPolicy="no-referrer" alt="User Avatar" />
                       </div>
                     ) : (
-                      <div className="my-2 me-2">
+                      <div className="my-2 mx-auto">
                         <FaUserCircle
                           style={{ fontSize: "60px" }}
                         ></FaUserCircle>
@@ -83,15 +83,25 @@ const Header = () => {
                   <Button
                     onClick={handleLogOut}
                     variant="outline-success"
-                    className="my-2"
+                    className="my-2 ms-2 p-3 d-block"
                   >
                     <FaSignOutAlt></FaSignOutAlt> Logout
                   </Button>
                 </>
               ) : (
-                <Link to="/login">
-                  <Button variant="secondary">Login</Button>
+                <>
+                 <Link to="/login" className={`d-flex justify-content-center align-items-center border border border-success px-4 py-3 me-2 my-2 rounded ${
+                  current?.pathname === "/login" && "activeLink"
+                }`}>
+                  <FaSignInAlt></FaSignInAlt> &nbsp; Login
                 </Link>
+                <Link to="/register" className={`d-flex justify-content-center align-items-center border border border-success px-4 py-3 me-2 my-2 rounded ${
+                  current?.pathname === "/register" && "activeLink"
+                }`}>
+                  <FaClipboard></FaClipboard> &nbsp; Register
+                </Link>
+                </>
+               
               )}
             </Nav>
           </Navbar.Collapse>

@@ -18,13 +18,9 @@ const Banner = () => {
             alt="First slide"
           />
           <Carousel.Caption className="text-black">
-            <h3 className="text-center">
-              <span className="p-2 bg-dark text-light d-inline-block">
-                Healthy Food keeps our mind strong and clear.
-              </span>
-            </h3>
+           
             <p className="p-2 bg-light d-inline-block">
-              Ahmed Hossain, <small>Chef Cooking Studio</small>
+              Healthy Food Healthy Life
             </p>
           </Carousel.Caption>
         </Carousel.Item>
@@ -36,13 +32,9 @@ const Banner = () => {
           />
 
           <Carousel.Caption className="text-black">
-            <h3 className="text-center">
-              <span className="p-2 bg-dark text-light d-inline-block">
-                The first wealth is health.
-              </span>
-            </h3>
+         
             <p className="p-2 bg-light d-inline-block">
-              Nahid, <small>Chef Cooking Studio</small>
+            The first wealth is health.
             </p>
           </Carousel.Caption>
         </Carousel.Item>
@@ -54,13 +46,9 @@ const Banner = () => {
           />
 
           <Carousel.Caption className="text-black">
-            <h3 className="text-center">
-              <span className="p-2 bg-dark text-light d-inline-block">
-                Proper nutrition, Smart Brain.
-              </span>
-            </h3>
+            
             <p className="p-2 bg-light d-inline-block">
-              Firoze Khan, <small>Chef Cooking Studio</small>
+            Proper nutrition, Smart Brain.
             </p>
           </Carousel.Caption>
         </Carousel.Item>

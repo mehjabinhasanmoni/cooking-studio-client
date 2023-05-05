@@ -50,12 +50,12 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   // Google Login
-  const googleProvider = async () => {
+  const googleProvider =  () => {
     return signInWithPopup(auth, provider);
   };
 
   // Github
-  const funGithubProvider = async () => {
+  const funGithubProvider =  () => {
     return signInWithPopup(auth, githubProvider);
   };
 

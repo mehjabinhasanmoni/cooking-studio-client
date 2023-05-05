@@ -1,6 +1,5 @@
-import React from "react";
-import { Button, Card, CardGroup, Container } from "react-bootstrap";
-import { FaBeer, FaRegEye, FaRegThumbsUp } from "react-icons/fa";
+import { Button, Card} from "react-bootstrap";
+import {  FaRegEye, FaRegThumbsUp } from "react-icons/fa";
 import LazyLoad from "react-lazy-load";
 import { Link } from "react-router-dom";
 
@@ -25,14 +24,14 @@ const ChefInfo = ({ chef }) => {
         <Card.Body>
           <Card.Title>{Chef_Name}</Card.Title>
           <Card.Text>
-            <div>
-              <p>
-                Years of Experience : <span>{Years_of_experience}</span>
-              </p>
-              <p>
+           
+             
+                Years of Experience : <span>{Years_of_experience}</span><br/>
+              
+              
                 Numbers of Recipes : <span>{Numbers_of_recipes}</span>
-              </p>
-            </div>
+              
+           
           </Card.Text>
         </Card.Body>
         <Card.Footer className="d-flex align-items-center justify-content-between">
