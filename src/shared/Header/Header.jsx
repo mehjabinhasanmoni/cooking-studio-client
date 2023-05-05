@@ -1,4 +1,4 @@
-import  { useContext } from "react";
+import { useContext } from "react";
 import {
   Button,
   Container,
@@ -8,7 +8,14 @@ import {
   Tooltip,
 } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
-import { FaClipboard, FaComment, FaHome, FaRegistered, FaSignInAlt, FaSignOutAlt, FaUserCircle } from "react-icons/fa";
+import {
+  FaClipboard,
+  FaComment,
+  FaHome,
+  FaSignInAlt,
+  FaSignOutAlt,
+  FaUserCircle,
+} from "react-icons/fa";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Header = () => {
@@ -35,15 +42,15 @@ const Header = () => {
       <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
         <Container>
           <Navbar.Brand>
-            <img src="https://i.ibb.co/7NMtdy5/logo.png" alt="" />
+            <Link to="/">
+              <img src="https://i.ibb.co/7NMtdy5/logo.png" alt="Logo" />
+            </Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav text-right">
-            <Nav className="mx-auto">
-              
-            </Nav>
-            <Nav >
-            <Link
+            <Nav className="mx-auto"></Nav>
+            <Nav>
+              <Link
                 to="/"
                 className={`d-flex justify-content-center align-items-center border border border-success px-4 py-3 me-2 my-2 rounded ${
                   current?.pathname === "/" && "activeLink"
@@ -70,12 +77,16 @@ const Header = () => {
                   >
                     {user?.photoURL ? (
                       <div className="avatar my-2 mx-auto">
-                        <img src={user.photoURL} referrerPolicy="no-referrer" alt="User Avatar" />
+                        <img
+                          src={user.photoURL}
+                          referrerPolicy="no-referrer"
+                          alt="User Avatar"
+                        />
                       </div>
                     ) : (
                       <div className="my-2 mx-auto">
                         <FaUserCircle
-                          style={{ fontSize: "60px" }}
+                          style={{ fontSize: "50px" }}
                         ></FaUserCircle>
                       </div>
                     )}
@@ -90,18 +101,23 @@ const Header = () => {
                 </>
               ) : (
                 <>
-                 <Link to="/login" className={`d-flex justify-content-center align-items-center border border border-success px-4 py-3 me-2 my-2 rounded ${
-                  current?.pathname === "/login" && "activeLink"
-                }`}>
-                  <FaSignInAlt></FaSignInAlt> &nbsp; Login
-                </Link>
-                <Link to="/register" className={`d-flex justify-content-center align-items-center border border border-success px-4 py-3 me-2 my-2 rounded ${
-                  current?.pathname === "/register" && "activeLink"
-                }`}>
-                  <FaClipboard></FaClipboard> &nbsp; Register
-                </Link>
+                  <Link
+                    to="/login"
+                    className={`d-flex justify-content-center align-items-center border border border-success px-4 py-3 me-2 my-2 rounded ${
+                      current?.pathname === "/login" && "activeLink"
+                    }`}
+                  >
+                    <FaSignInAlt></FaSignInAlt> &nbsp; Login
+                  </Link>
+                  <Link
+                    to="/register"
+                    className={`d-flex justify-content-center align-items-center border border border-success px-4 py-3 me-2 my-2 rounded ${
+                      current?.pathname === "/register" && "activeLink"
+                    }`}
+                  >
+                    <FaClipboard></FaClipboard> &nbsp; Register
+                  </Link>
                 </>
-               
               )}
             </Nav>
           </Navbar.Collapse>
