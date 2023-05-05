@@ -1,15 +1,14 @@
-import React, { useContext } from "react";
+import  { useContext } from "react";
 import {
   Button,
   Container,
   Nav,
-  NavLink,
   Navbar,
   OverlayTrigger,
   Tooltip,
 } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
-import { FaUserCircle } from "react-icons/fa";
+import { FaComment, FaHome, FaSignOutAlt, FaUserCircle } from "react-icons/fa";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Header = () => {
@@ -39,52 +38,54 @@ const Header = () => {
             <img src="https://i.ibb.co/7NMtdy5/logo.png" alt="" />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
+          <Navbar.Collapse id="responsive-navbar-nav text-right">
             <Nav className="mx-auto">
-              <Link
+              
+            </Nav>
+            <Nav >
+            <Link
                 to="/"
-                className={`border border-2 border-success p-2 m-2  ${
+                className={`border border border-success px-4 py-3 me-2 my-2 rounded ${
                   current?.pathname === "/" && "activeLink"
                 }`}
               >
-                Home
+                <FaHome></FaHome> Home
               </Link>
 
               <Link
                 to="/blog"
-                className={`border border-2 border-success p-2 m-2  ${
+                className={`border border border-success px-4 py-3 me-2 my-2 rounded ${
                   current?.pathname === "/blog" && "activeLink"
                 }`}
               >
-                Blog
+                <FaComment></FaComment> Blog
               </Link>
-            </Nav>
-            <Nav>
-              {/* {
-                                user && {user.email}
-                            } */}
 
               {user ? (
                 <>
-                  {user?.photoURL ? (
-                    <div className="avatar">
-                      <OverlayTrigger
-                        placement="right"
-                        delay={{ show: 250, hide: 400 }}
-                        overlay={renderTooltip}
-                      >
+                  <OverlayTrigger
+                    placement="right"
+                    delay={{ show: 250, hide: 400 }}
+                    overlay={renderTooltip}
+                  >
+                    {user?.photoURL ? (
+                      <div className="avatar my-2 me-2">
                         <img src={user?.photoURL} alt="missing" />
-                      </OverlayTrigger>
-                    </div>
-                  ) : (
-                    <div><FaUserCircle style={{fontSize:'50px'}}></FaUserCircle></div>
-                  )}
+                      </div>
+                    ) : (
+                      <div className="my-2 me-2">
+                        <FaUserCircle
+                          style={{ fontSize: "60px" }}
+                        ></FaUserCircle>
+                      </div>
+                    )}
+                  </OverlayTrigger>
                   <Button
                     onClick={handleLogOut}
-                    variant="outline-secondary"
-                    className="mx-1"
+                    variant="outline-success"
+                    className="my-2"
                   >
-                    Logout
+                    <FaSignOutAlt></FaSignOutAlt> Logout
                   </Button>
                 </>
               ) : (

@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import { FaDownload } from "react-icons/fa";
 import ReactToPdf from "react-to-pdf";
 const ref = React.createRef();
 const options = {
@@ -12,7 +13,7 @@ const Blog = () => {
     <div   className="container mt-5 mb-5">
         
        <div className="print p-3" ref={ref}>
-        <h1 className="mb-5">Question and Answers</h1>
+        <h1 className="mb-5 text-success">Question and Answers</h1>
         {/* Ques -1 */}
         <div className="question ">
           <p className="text-lg font-bold mb-3">
@@ -75,7 +76,7 @@ const Blog = () => {
       </div>
       
       <ReactToPdf targetRef={ref} filename="blog.pdf" options={options} scale={0.8}>
-        {({ toPdf }) => <Button variant="primary" onClick={toPdf}>Download Blog</Button>}
+        {({ toPdf }) => <Button variant="success" className="p-3" onClick={toPdf}><FaDownload></FaDownload> Download Blog</Button>}
       </ReactToPdf>
       
     </div>

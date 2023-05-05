@@ -1,86 +1,77 @@
-import React, {  createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
-import app from '../firbase/Firbase.config';
+import { createContext, useEffect, useState } from "react";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
+import app from "../firbase/Firbase.config";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { GithubAuthProvider } from "firebase/auth";
 
+export const AuthContext = createContext(null);
 
- export const AuthContext = createContext(null);
+const provider = new GoogleAuthProvider();
 
- const provider = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider();
 
- const githubProvider = new GithubAuthProvider();
+const auth = getAuth(app);
 
-const auth =  getAuth(app);
+const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
+  const createUser = (email, password) => {
+    setLoading(true);
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
 
+  const signIn = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
 
-const AuthProvider = ({children}) => {
+  const logOut = () => {
+    setLoading(true);
+    return signOut(auth);
+  };
 
-    const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (loggedUser) => {
+      console.log("logged in user inside auth state observer", loggedUser);
+      setUser(loggedUser);
+      setLoading(false);
+    });
 
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
-    const createUser = (email, password) => {
-        setLoading(true);
-        return createUserWithEmailAndPassword(auth, email, password);
-    }
+  // Google Login
+  const googleProvider = async () => {
+    return signInWithPopup(auth, provider);
+  };
 
-    const signIn = (email, password) => {
-        setLoading(true);
-        return signInWithEmailAndPassword(auth, email, password);
-    }
+  // Github
+  const funGithubProvider = async () => {
+    return signInWithPopup(auth, githubProvider);
+  };
 
-    const logOut = () => {
-        setLoading(true);
-        return signOut(auth);
-    }
+  const authInfo = {
+    user,
+    loading,
+    createUser,
+    signIn,
+    logOut,
+    googleProvider,
+    funGithubProvider,
+  };
 
-    useEffect(()=>{
-        const unsubscribe = onAuthStateChanged(auth, loggedUser => {
-            console.log('logged in user inside auth state observer', loggedUser)
-            setUser(loggedUser);
-            setLoading(false);
-        })
-
-        return () => {
-            unsubscribe();
-        }
-    }, [])
-
-    const googleProvider = () => {
-        signInWithPopup(auth, provider);
-    }
-
-    const funGithubProvider = () => {
-        signInWithPopup(auth, githubProvider)
-    }
-
-    const updateProfileUser = (user, name, photourl) =>{
-        updateProfile(user, {
-            displayName: name, photoURL: photourl
-          } )
-    }
-
-    const authInfo = {
-        user,
-        loading,
-        createUser,
-        signIn,
-        logOut,
-        googleProvider,
-        funGithubProvider,
-        updateProfileUser
-        
-    }
-
-    
-    return (
-        <AuthContext.Provider value={authInfo}>
-            {children}
-            
-        </AuthContext.Provider>
-    );
+  return (
+    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+  );
 };
 
 export default AuthProvider;

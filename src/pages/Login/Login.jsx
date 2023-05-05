@@ -1,19 +1,21 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { FaGoogle, FaGithub } from "react-icons/fa";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const Login = () => {
   const { signIn, googleProvider, funGithubProvider } = useContext(AuthContext);
-  const navigate = useNavigate();
   const [error, setError] = useState("");
 
+  // Location Hooks
+  const navigate = useNavigate();
   const location = useLocation();
-  console.log("login page location", location);
+
+  // Generating Url
   const from = location.state?.from?.pathname || "/";
 
+  // Form Sign In
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -26,7 +28,7 @@ const Login = () => {
         const loggedUser = result.user;
         console.log(loggedUser);
         setError("");
-        
+
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -34,22 +36,25 @@ const Login = () => {
         setError(error.message);
       });
   };
-  // Google Sign In
 
-  const handleGoogleSignIn = () => {
+  // Google Sign In
+  const handleGoogleSignIn = async () => {
     googleProvider()
       .then((result) => {
         const googleUser = result.user;
+        navigate(from, { replace: true });
       })
       .catch((error) => {
-        console.log(error);
+        console.log("Google sign in error", error);
       });
   };
+
   // Github  Sign In
   const handleGitHubSignIn = () => {
     funGithubProvider()
       .then((result) => {
         const githubUser = result.user;
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error);
@@ -98,7 +103,11 @@ const Login = () => {
         </Form.Text>
 
         <div className="mt-5">
-          <Button onClick={handleGoogleSignIn} variant="outline-primary" className="d-block mb-2 w-100 p-3">
+          <Button
+            onClick={handleGoogleSignIn}
+            variant="outline-primary"
+            className="d-block mb-2 w-100 p-3"
+          >
             <FaGoogle></FaGoogle> Sign in with Google
           </Button>
           <Button

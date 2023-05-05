@@ -1,13 +1,12 @@
-import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import Main from '../layouts/Main';
 import Home from '../pages/Home/Home';
 import SingleChef from '../container/SingleChef/SingleChef';
 import Login from '../pages/Login/Login';
-import Register from '../pages/Register/Register';
 import PrivateRoutes from './PrivateRoutes';
 import Blog from '../pages/Blog/Blog';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
+import Register from '../pages/Register/Register';
 
 const router = createBrowserRouter([
     {
@@ -35,7 +34,7 @@ const router = createBrowserRouter([
             },
             {
                 path : '/register',
-                element :<Register></Register>
+                element :<Register/>
                 
                 
             },
